@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { RabbitMqService } from './rabbit-mq.service';
-
+import { MongooseModule } from '@nestjs/mongoose';
 @Module({
-
   imports:[
     ClientsModule.register([
       {
