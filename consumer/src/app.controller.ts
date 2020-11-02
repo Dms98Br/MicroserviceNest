@@ -6,7 +6,7 @@ import { Transport, MessagePattern, Payload, Ctx, RmqContext } from '@nestjs/mic
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @MessagePattern('rabbit-mq-producer')
+  @MessagePattern('Create-Task')
   public async execute(@Payload() data:any, @Ctx() context: RmqContext){
     const channel = context.getChannelRef();
     const originalMessage = context.getMessage();

@@ -9,13 +9,11 @@ import {
 } from '@nestjs/common';
 import { Task } from './shared/task';
 import { TaskService } from './shared/task.service';
-import { RabbitMqService } from '../rabbit-mq/rabbit-mq.service';
 @Controller('tasks')
 export class TasksController {
     constructor(
         private taskService: TaskService,
     ){}
-    // private rabbitMqService: RabbitMqService
     
     @Get()
     async getAll() : Promise< Task[]>{
@@ -29,8 +27,6 @@ export class TasksController {
 
     @Post()
     async create(@Body() task : Task): Promise<Task>{
-        
-        //this.rabbitMqService.send('rabbit-mq-producer', {menssage: 'Menssagem'})
         return this.taskService.create(task)
     }
 

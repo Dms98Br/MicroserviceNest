@@ -4,7 +4,7 @@ import { ClientProxy } from '@nestjs/microservices'
 @Injectable()
 export class RabbitMqService {
     constructor(
-        @Inject('rabbit-mq-module')
+        @Inject('rabbit-mq-module')        
         private readonly client: ClientProxy,
     ){}
     public async send(pattern: string, data: any){

@@ -9,7 +9,7 @@ async function bootstrap() {
         urls:[
           'amqps://gheqsodj:KqIopiM5Fjph_nNAULNJhK76XgP4-Ica@jackal.rmq.cloudamqp.com/gheqsodj'
         ],
-        queue: 'rabbit-mq-nest-js',
+        queue: 'create-task',
         noAck: false,
         prefetchCount: 1
       },

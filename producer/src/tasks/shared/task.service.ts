@@ -2,13 +2,13 @@ import { Get, Injectable } from '@nestjs/common';
 import { Task } from './task';
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { RabbitMqService } from '../../rabbit-mq/rabbit-mq.service';
+import { CreateTaskService } from '../../create-task/create-task.service'
 @Injectable()
 export class TaskService {
 
     constructor(@InjectModel('Task') 
     private readonly taskModel: Model<Task>,
-    private rabbitMqService: RabbitMqService
+    private createTaskService: CreateTaskService
     ){}
     
     async getAll(){
@@ -21,7 +21,7 @@ export class TaskService {
 
     async create( task: Task ){
         const createdTask = new this.taskModel(task);
-        this.rabbitMqService.send('rabbit-mq-producer', createdTask )
+        this.createTaskService.send('Create-Task', createdTask)
         return await createdTask.save();
     }
 

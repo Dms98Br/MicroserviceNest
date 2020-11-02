@@ -15,7 +15,7 @@ import { MongooseModule } from '@nestjs/mongoose';
           queue: 'rabbit-mq-nest-js',
         },
       },
-    ]),
+    ]),    
   ],
   controllers:[
 

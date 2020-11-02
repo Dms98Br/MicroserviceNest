@@ -4,14 +4,13 @@ import { TasksController } from './tasks.controller';
 import { TaskSchema } from './schemas/task.schemas'
 import { MongooseModule } from '@nestjs/mongoose';
 import { RabbitMqModule } from '../rabbit-mq/rabbit-mq.module';
-import { AppController } from '../app.controller';
-import { AppService } from '../app.service';
-import { RabbitMqService } from '../rabbit-mq/rabbit-mq.service'
+import { CreateTaskModule } from '../create-task/create-task.module'
 
 @Module({
     imports:[
         MongooseModule.forFeature([{ name: 'Task', schema: TaskSchema }]),
-        RabbitMqModule
+        RabbitMqModule,
+        CreateTaskModule
     ],
     controllers: [TasksController],
     providers: [TaskService]
