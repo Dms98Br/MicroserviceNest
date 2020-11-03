@@ -21,6 +21,7 @@ export class TaskService {
 
     async create( task: Task ){
         const createdTask = new this.taskModel(task);
+        //Faz conexão com RabbitMQ
         this.createTaskService.send('Create-Task', createdTask)
         return await createdTask.save();
     }
